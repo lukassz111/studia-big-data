@@ -18,7 +18,10 @@ public class LogFileMapper extends Mapper<LongWritable, Text, Text, IntWritable>
             throws IOException, InterruptedException {
 
         String line = value.toString();
-        String ip = line.substring(0, line.indexOf(" ")).trim();
+
+        int index = line.indexOf(" ");if(index > line.length()) { index = line.length()-1; }
+
+        String ip = line.substring(0, index).trim();
         if (ip.length() > 0)
         {
             context.write(new Text(ip), new IntWritable(1));
