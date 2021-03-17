@@ -20,8 +20,8 @@ public class LogFileMapper extends Mapper<LongWritable, Text, Text, IntWritable>
         String line = value.toString();
         try {
             int index = line.indexOf(" ");
-            if(index > line.length()) { index = line.length()-1; }
-            else if(index < 0) { index = line.length()-1; }
+            if(index > line.length()) { index = line.length(); }
+            else if(index < 0) { index = line.length(); }
 
             String ip = line.substring(0, index).trim();
             if (ip.length() > 0)
